@@ -1,0 +1,4 @@
+{
+    "dbt.enableNewLineagePanel": true,
+    "python.analysis.autoImportCompletions": false
+}

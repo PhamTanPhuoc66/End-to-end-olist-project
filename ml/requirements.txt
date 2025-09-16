@@ -1,0 +1,15 @@
+
+databricks-sql-connector
+mlflow
+imblearn
+ydata-profiling 
+ipywidgets
+
+
+--extra-index-url https://pypi.nvidia.com
+cuml-cu12==25.08.*
+cudf-cu12==25.08.*
+cugraph-cu12==25.08.*
+dask-cuda==25.08.*
+dask-cudf-cu12==25.08.*
+raft-dask-cu12==25.08.*

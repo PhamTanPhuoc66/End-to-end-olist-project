@@ -1,0 +1,114 @@
+version: 2
+
+sources:
+  - name: star_schema
+    schema: gold
+    tables:
+      - name: dim_olist_customers
+        columns:
+          - name: customer_key
+            tests:
+              - not_null
+              - unique
+
+      - name: dim_olist_sellers
+        columns:
+          - name: seller_key
+            tests:
+              - not_null
+              - unique
+
+      - name: dim_olist_products
+        columns:
+          - name: product_key
+            tests:
+              - not_null
+              - unique
+
+      - name: dim_olist_orders
+        columns:
+          - name: order_key
+            tests:
+              - not_null
+              - unique
+
+      - name: dim_olist_payment_type
+        columns:
+          - name: payment_type_key
+            tests:
+              - not_null
+              - unique
+
+      - name: dim_date
+        columns:
+          - name: date_key
+            tests:
+              - not_null
+              - unique
+
+      - name: dim_time
+        columns:
+          - name: time_key
+            tests:
+              - not_null
+              - unique
+
+      - name: fact_order_items
+        columns:
+          - name: order_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_orders')
+                  field: order_key
+          - name: customer_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_customers')
+                  field: customer_key
+          - name: seller_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_sellers')
+                  field: seller_key
+          - name: product_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_products')
+                  field: product_key
+
+      - name: fact_payments
+        columns:
+          - name: order_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_orders')
+                  field: order_key
+          - name: customer_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_customers')
+                  field: customer_key
+          - name: payment_type_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_payment_type')
+                  field: payment_type_key
+
+      - name: fact_reviews
+        columns:
+          - name: order_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_orders')
+                  field: order_key
+          - name: customer_key
+            tests:
+              - relationships:
+                  to: source('star_schema', 'dim_olist_customers')
+                  field: customer_key
+
+  - name: lookup
+    schema: silver
+    tables:
+      - name: silver_olist_geolocation
+      - name: silver_olist_product_category_name_translation
