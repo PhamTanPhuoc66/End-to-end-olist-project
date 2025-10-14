@@ -3,7 +3,7 @@ dbt_databrick:
     dev:
       type: databricks
       catalog: "{{ env_var('DBT_CATALOG', 'olist_dataset') }}"
-      host: "{{ env_var('DBT_DATABRICKS_HOST') }}"
+      host: "dbc-214ffec4-c1f2.cloud.databricks.com"
       http_path: "{{ env_var('DBT_DATABRICKS_HTTP_PATH') }}"
       schema: "{{ env_var('DBT_SCHEMA', 'dbt_schema') }}"
       threads: 1
