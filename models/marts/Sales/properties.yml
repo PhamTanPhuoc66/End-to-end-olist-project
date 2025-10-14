@@ -1,0 +1,18 @@
+version : 2
+
+models:
+- name: sales_revenue_by_month
+  description: "Sales revenue by month"
+  columns:
+    - name: month
+      description: "Month"
+    - name: total_revenue
+      description: "Total revenue"
+      tests:
+        - not_null
+        - relationships:
+            to: ref('dim_date')
+            field: month
+    - name: total_units_sold
+      description: "Total units sold"
+    
