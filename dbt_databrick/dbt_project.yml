@@ -38,3 +38,4 @@ models:
 sources:
   dbt_databrick:
     +catalog: 'olist_dataset'
+    +schema: 'gold'
