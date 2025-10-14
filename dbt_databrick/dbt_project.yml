@@ -35,11 +35,3 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
-sources:
-  dbt_databrick:
-    +catalog: 'olist_dataset'
-    +schema: 'gold'
-seeds:
-  dbt_databrick:
-    +catalog: 'olist_dataset'
-    +schema: 'dbt_schema' 
