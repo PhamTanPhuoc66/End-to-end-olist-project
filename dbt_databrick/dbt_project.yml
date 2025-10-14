@@ -39,3 +39,7 @@ sources:
   dbt_databrick:
     +catalog: 'olist_dataset'
     +schema: 'gold'
+seeds:
+  dbt_databrick:
+    +catalog: 'olist_dataset'
+    +schema: 'dbt_schema' 
