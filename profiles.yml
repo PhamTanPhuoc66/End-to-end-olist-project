@@ -4,7 +4,7 @@ dbt_databrick:
       type: databricks
       catalog: "{{ env_var('DBT_CATALOG', 'olist_dataset') }}"
       host: "dbc-214ffec4-c1f2.cloud.databricks.com"
-      http_path: "{{ env_var('DBT_DATABRICKS_HTTP_PATH') }}"
+      http_path: "/sql/1.0/warehouses/8753fa7395d762fe"
       schema: "{{ env_var('DBT_SCHEMA', 'dbt_schema') }}"
       threads: 1
       token: "{{ env_var('DBT_DATABRICKS_TOKEN') }}"
