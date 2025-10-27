@@ -1,0 +1,29 @@
+{
+  "inputs": [
+    { "name": "customer_tenure", "shape": [1], "datatype": "INT64", "data": [12] },
+    { "name": "frequency_orders", "shape": [1], "datatype": "INT64", "data": [5] },
+    { "name": "monetary_value", "shape": [1], "datatype": "FP64", "data": [500.50] },
+    { "name": "sum_freight", "shape": [1], "datatype": "FP64", "data": [150.20] },
+    { "name": "avg_order_price", "shape": [1], "datatype": "FP64", "data": [100.10] },
+    { "name": "avg_freight", "shape": [1], "datatype": "FP64", "data": [30.04] },
+    { "name": "avg_delivery_delay", "shape": [1], "datatype": "FP64", "data": [2.5] },
+    { "name": "late_delivery_rate", "shape": [1], "datatype": "FP64", "data": [0.1] },
+    { "name": "avg_delivery_overdue_days", "shape": [1], "datatype": "FP64", "data": [1.0] },
+    { "name": "avg_internal_processing_days", "shape": [1], "datatype": "FP64", "data": [1.2] },
+    { "name": "avg_promised_window_days", "shape": [1], "datatype": "FP64", "data": [5.0] },
+    { "name": "holiday_purchase_rate", "shape": [1], "datatype": "FP64", "data": [0.0] },
+    { "name": "avg_overdue_days_on_holidays", "shape": [1], "datatype": "FP64", "data": [0.0] },
+    { "name": "avg_overdue_days_on_non_holidays", "shape": [1], "datatype": "FP64", "data": [1.0] },
+    { "name": "avg_review_score", "shape": [1], "datatype": "FP64", "data": [4.5] },
+    { "name": "distinct_payment_methods", "shape": [1], "datatype": "FP64", "data": [2.0] },
+    { "name": "avg_installments", "shape": [1], "datatype": "FP64", "data": [1.5] },
+    { "name": "distinct_categories", "shape": [1], "datatype": "FP64", "data": [3.0] },
+    { "name": "distinct_products", "shape": [1], "datatype": "FP64", "data": [4.0] },
+    { "name": "distinct_sellers", "shape": [1], "datatype": "FP64", "data": [3.0] },
+    { "name": "category_concentration", "shape": [1], "datatype": "FP64", "data": [0.8] },
+    { "name": "most_purchased_product", "shape": [1], "datatype": "FP64", "data": [0.7] },
+    { "name": "most_used_payment_type", "shape": [1], "datatype": "BYTES", "data": ["credit_card"] },
+    { "name": "review_with_comment", "shape": [1], "datatype": "FP64", "data": [0.5] },
+    { "name": "avg_review_response_time", "shape": [1], "datatype": "FP64", "data": [24.5] }
+  ]
+}

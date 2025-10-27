@@ -1,0 +1,79 @@
+{{- if .Values.inferenceService.enabled -}}
+apiVersion: "serving.kserve.io/v1beta1"
+kind: InferenceService
+metadata:
+  name: {{ include "olist-model-deployment.fullname" . }}
+  labels:
+    {{- include "olist-model-deployment.labels" . | nindent 4 }}
+  annotations:
+    keel.sh/policy: "force" 
+    keel.sh/trigger: "poll"
+    keel.sh/poll-schedule: "@every 5m"
+
+    # # 2. Báo cho Keel biết nó đang nâng cấp Helm chart này
+    # keel.sh/helm-release: {{ .Release.Name | quote }}
+    
+    # # 3. Báo cho Keel biết phải cập nhật giá trị nào trong values.yaml
+    # keel.sh/helm-value-path: "image.tag"
+    
+    # # 4. 💡 ĐÂY LÀ KHÓA CHÍNH: 
+    # # Báo Keel cập nhật giá trị 'image.tag' bằng digest của tag đó,
+    # # thay vì chỉ dùng tên tag.
+    # keel.sh/update-strategy: "digest"
+    serving.knative.dev/revision-timeout-seconds: "1800"
+spec:
+  predictor:
+    # === Cấu hình Scale ===
+    # Đọc từ values.yaml
+    minReplicas: {{ .Values.autoscaling.minReplicas }} # Sẽ là 0
+    maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+    
+    # === Cấu hình Service Account ===
+    serviceAccountName: {{ include "olist-model-deployment.serviceAccountName" . }}
+    
+    # === Định nghĩa Container Model ===
+    containers:
+    - name: {{ .Chart.Name }} # Tên container (KServe yêu cầu)
+      image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      imagePullPolicy: {{ .Values.image.pullPolicy }}
+      ports:
+        # Port mà container của bạn đang chạy
+        - containerPort: {{ .Values.containerPort }}
+          name: http1 # Knative yêu cầu port phải có tên
+          protocol: TCP
+      env:
+      - name: MLSERVER_HTTP_PORT
+        value: "{{ .Values.containerPort }}" # Sẽ lấy 8080 từ values.yaml
+      - name: MLSERVER_HOST
+        value: "0.0.0.0"
+      - name: MLSERVER_PARALLEL_WORKERS
+        value: "0"
+      - name: MLFLOW_ENV_MANAGER
+        value: "{{ .Values.mlflowEnvManager }}"
+
+      # Ghi đè Entrypoint và Command (giống hệt lệnh Docker của bạn)
+      command: ["/bin/bash"]
+      args:
+      - "-c"
+      - |
+        echo '{"name": "{{ .Values.modelName }}", "implementation": "mlserver_mlflow.MLflowRuntime"}' > /opt/ml/model/model-settings.json
+        echo "--- model-settings.json created (name: {{ .Values.modelName }}), starting MLServer... ---"
+        {{ .Values.mlserverPath }} start /opt/ml/model
+      # 📈 Cấu hình target cho HPA (nếu muốn)
+      # Đây là cách KServe áp dụng target CPU/Memory
+      resources:
+        requests:
+          # Đặt requests thấp để dễ scale-to-zero
+          cpu: "100m" 
+          memory: "128Mi"
+        limits:
+          cpu: "1000m"
+          memory: "1Gi"
+
+      {{- if .Values.autoscaling.targetCPUUtilizationPercentage }}
+        # Thêm annotation để KPA biết mục tiêu CPU
+      annotations:
+        autoscaling.knative.dev/metric: "cpu"
+        autoscaling.knative.dev/target: "{{ .Values.autoscaling.targetCPUUtilizationPercentage }}" # Target 80%
+      {{- end }}
+{{- end -}}

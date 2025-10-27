@@ -76,3 +76,132 @@ Runtime Error
 [0m08:28:03.759829 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A11F0A2450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A11F0FFD50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A11F09BE10>]}
 [0m08:28:03.759829 [debug] [MainThread]: Flushing usage events
 [0m08:28:05.282797 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:52:52.379112 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78b934063410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78b934061090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78b9314ffd50>]}
+
+
+============================== 18:52:52.401924 | 95b6d218-fa85-4f48-90e5-8772878a5d1b ==============================
+[0m18:52:52.401924 [info ] [MainThread]: Running with dbt=1.10.10
+[0m18:52:52.402303 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'profiles_dir': '/home/phuoc19/.dbt', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'cache_selected_only': 'False', 'empty': 'None', 'printer_width': '80', 'log_path': 'logs', 'write_json': 'True', 'invocation_command': 'dbt init', 'log_format': 'default', 'target_path': 'None', 'log_cache_events': 'False', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'quiet': 'False', 'debug': 'False', 'no_print': 'None', 'fail_fast': 'False', 'use_experimental_parser': 'False'}
+[0m18:52:52.427767 [info ] [MainThread]: Creating dbt configuration folder at /home/phuoc19/.dbt
+[0m18:53:04.159858 [error] [MainThread]: Encountered an error:
+
+[0m18:53:04.162400 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 178, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/lib/python3.11/site-packages/dbt/cli/main.py", line 483, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/lib/python3.11/site-packages/dbt/task/init.py", line 324, in run
+    project_name = self.get_valid_project_name()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/lib/python3.11/site-packages/dbt/task/init.py", line 278, in get_valid_project_name
+    name = click.prompt("Enter a name for your project (letters, digits, underscore)")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/lib/python3.11/site-packages/click/termui.py", line 168, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/lib/python3.11/site-packages/click/termui.py", line 151, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m18:53:04.163712 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 11.820135, "process_in_blocks": "0", "process_kernel_time": 0.162883, "process_mem_max_rss": "121716", "process_out_blocks": "40304", "process_user_time": 1.797718}
+[0m18:53:04.164570 [debug] [MainThread]: Command `dbt init` failed at 18:53:04.164353 after 11.82 seconds
+[0m18:53:04.165223 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78b9314ffe10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78b93518de10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78b93153c350>]}
+[0m18:53:04.165906 [debug] [MainThread]: Flushing usage events
+[0m18:53:05.908694 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:59:45.303270 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7158befd4a10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7158bb980090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7158bc7b4750>]}
+
+
+============================== 18:59:45.305304 | e7d8ea24-9dc2-4c18-83c2-e9920b8b2dea ==============================
+[0m18:59:45.305304 [info ] [MainThread]: Running with dbt=1.10.10
+[0m18:59:45.305669 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'indirect_selection': 'eager', 'partial_parse': 'True', 'log_path': 'logs', 'empty': 'None', 'cache_selected_only': 'False', 'write_json': 'True', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'version_check': 'True', 'quiet': 'False', 'static_parser': 'True', 'warn_error': 'None', 'printer_width': '80', 'no_print': 'None', 'profiles_dir': '/home/phuoc19/.dbt', 'invocation_command': 'dbt debug', 'log_cache_events': 'False', 'introspect': 'True', 'target_path': 'None', 'debug': 'False', 'use_experimental_parser': 'False'}
+[0m18:59:45.310372 [info ] [MainThread]: dbt version: 1.10.10
+[0m18:59:45.310649 [info ] [MainThread]: python version: 3.11.13
+[0m18:59:45.310871 [info ] [MainThread]: python path: /home/phuoc19/Projects/End_to_end_ML_DL_project/.venv/bin/python3
+[0m18:59:45.311067 [info ] [MainThread]: os info: Linux-6.14.0-29-generic-x86_64-with-glibc2.39
+[0m18:59:45.311267 [info ] [MainThread]: Using profiles dir at /home/phuoc19/.dbt
+[0m18:59:45.311462 [info ] [MainThread]: Using profiles.yml file at /home/phuoc19/.dbt/profiles.yml
+[0m18:59:45.311645 [info ] [MainThread]: Using dbt_project.yml file at /home/phuoc19/Projects/End_to_end_ML_DL_project/dbt_project.yml
+[0m18:59:45.311835 [info ] [MainThread]: Configuration:
+[0m18:59:45.312017 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m18:59:45.312191 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m18:59:45.312358 [info ] [MainThread]: Required dependencies:
+[0m18:59:45.312551 [debug] [MainThread]: Executing "git --help"
+[0m18:59:45.320294 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m18:59:45.320770 [debug] [MainThread]: STDERR: "b''"
+[0m18:59:45.321021 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m18:59:45.321274 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m18:59:45.321582 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m18:59:45.321841 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/phuoc19/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m18:59:45.322145 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </home/phuoc19/Projects/End_to_end_ML_DL_project/dbt_project.yml> not found
+
+[0m18:59:45.322689 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.054567665, "process_in_blocks": "0", "process_kernel_time": 0.077981, "process_mem_max_rss": "101216", "process_out_blocks": "16", "process_user_time": 0.81381}
+[0m18:59:45.323036 [debug] [MainThread]: Command `dbt debug` failed at 18:59:45.322968 after 0.06 seconds
+[0m18:59:45.323317 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7158bf433250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7158bb6b7490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7158bb8251d0>]}
+[0m18:59:45.323599 [debug] [MainThread]: Flushing usage events
+[0m18:59:46.713068 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:42:52.747777 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ed65740aa10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ed657453c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ed65740a850>]}
+
+
+============================== 08:42:52.771670 | 3246d423-fc22-4e4a-a1e6-56fa90a3e7c7 ==============================
+[0m08:42:52.771670 [info ] [MainThread]: Running with dbt=1.10.10
+[0m08:42:52.772049 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'log_format': 'default', 'partial_parse': 'True', 'version_check': 'True', 'invocation_command': 'dbt init', 'log_path': 'logs', 'debug': 'False', 'indirect_selection': 'eager', 'warn_error': 'None', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'fail_fast': 'False', 'introspect': 'True', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'no_print': 'None', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'profiles_dir': '/home/phuoc19/.dbt', 'static_parser': 'True', 'write_json': 'True', 'use_colors': 'True', 'printer_width': '80'}
+[0m08:42:52.797698 [info ] [MainThread]: Creating dbt configuration folder at /home/phuoc19/.dbt
+[0m08:43:10.634306 [error] [MainThread]: Encountered an error:
+
+[0m08:43:10.636973 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project /.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 178, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project /.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project /.venv/lib/python3.11/site-packages/dbt/cli/main.py", line 483, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project /.venv/lib/python3.11/site-packages/dbt/task/init.py", line 324, in run
+    project_name = self.get_valid_project_name()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project /.venv/lib/python3.11/site-packages/dbt/task/init.py", line 278, in get_valid_project_name
+    name = click.prompt("Enter a name for your project (letters, digits, underscore)")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project /.venv/lib/python3.11/site-packages/click/termui.py", line 168, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/phuoc19/Projects/End_to_end_ML_DL_project /.venv/lib/python3.11/site-packages/click/termui.py", line 151, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m08:43:10.638258 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 17.925644, "process_in_blocks": "16", "process_kernel_time": 0.129823, "process_mem_max_rss": "122564", "process_out_blocks": "40304", "process_user_time": 1.891376}
+[0m08:43:10.639079 [debug] [MainThread]: Command `dbt init` failed at 08:43:10.638887 after 17.93 seconds
+[0m08:43:10.639719 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ed657408190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ed65b091e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ed657903d90>]}
+[0m08:43:10.640348 [debug] [MainThread]: Flushing usage events
+[0m08:43:12.032652 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:19:01.816269 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7805cb6b5310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7805cb694ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7805cb660b10>]}
+
+
+============================== 12:19:01.841274 | 247092d4-a536-4e3d-abcb-22de2ac194aa ==============================
+[0m12:19:01.841274 [info ] [MainThread]: Running with dbt=1.10.10
+[0m12:19:01.841734 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'profiles_dir': '/home/phuoc19/.dbt', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'indirect_selection': 'eager', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'invocation_command': 'dbt test', 'log_path': 'logs', 'debug': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'write_json': 'True', 'warn_error': 'None', 'printer_width': '80', 'quiet': 'False'}
+[0m12:19:01.842129 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/phuoc19/Projects/End_to_end_ML_DL_project/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:19:01.842635 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": false, "command_wall_clock_time": 0.06291194, "process_in_blocks": "8", "process_kernel_time": 0.171749, "process_mem_max_rss": "122536", "process_out_blocks": "35992", "process_user_time": 1.728478}
+[0m12:19:01.842996 [debug] [MainThread]: Command `dbt test` failed at 12:19:01.842923 after 0.06 seconds
+[0m12:19:01.843283 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7805cb6b43d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7805cf587690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7805cb6c0b10>]}
+[0m12:19:01.843568 [debug] [MainThread]: Flushing usage events
+[0m12:19:03.315622 [debug] [MainThread]: An error was encountered while trying to flush usage events

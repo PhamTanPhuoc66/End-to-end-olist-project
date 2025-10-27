@@ -1,0 +1,56 @@
+{{- if .Values.inferenceService.enabled }}
+
+🚀 Dịch vụ Model (InferenceService) của bạn đã được triển khai!
+
+KServe (Knative) sẽ tự động quản lý URL và tự động scale (bao gồm cả scale-về-0).
+
+1. Lấy URL của ứng dụng bằng lệnh sau:
+   (Có thể mất một vài phút để URL sẵn sàng)
+
+   export APP_URL=$(kubectl get isvc --namespace {{ .Release.Namespace }} {{ include "olist-model-deployment.fullname" . }} -o jsonpath='{.status.url}')
+   echo "Model của bạn đang chạy tại: $APP_URL"
+
+2. Bạn có thể kiểm tra model (ví dụ: nếu có endpoint /v1/models):
+
+   echo "Sử dụng URL này để gọi API, ví dụ:"
+   echo "curl $APP_URL/v1/models/{{ include "olist-model-deployment.name" . }}:predict -d @my_input.json"
+
+{{- else }}
+
+1. Get the application URL by running these commands:
+{{- if .Values.httpRoute.enabled }}
+{{- if .Values.httpRoute.hostnames }}
+    export APP_HOSTNAME={{ .Values.httpRoute.hostnames | first }}
+{{- else }}
+    export APP_HOSTNAME=$(kubectl get --namespace {{(first .Values.httpRoute.parentRefs).namespace | default .Release.Namespace }} gateway/{{ (first .Values.httpRoute.parentRefs).name }} -o jsonpath="{.spec.listeners[0].hostname}")
+  {{- end }}
+{{- if and .Values.httpRoute.rules (first .Values.httpRoute.rules).matches (first (first .Values.httpRoute.rules).matches).path.value }}
+    echo "Visit http://$APP_HOSTNAME{{ (first (first .Values.httpRoute.rules).matches).path.value }} to use your application"
+
+    NOTE: Your HTTPRoute depends on the listener configuration of your gateway and your HTTPRoute rules.
+    The rules can be set for path, method, header and query parameters.
+    You can check the gateway configuration with 'kubectl get --namespace {{(first .Values.httpRoute.parentRefs).namespace | default .Release.Namespace }} gateway/{{ (first .Values.httpRoute.parentRefs).name }} -o yaml'
+{{- end }}
+{{- else if .Values.ingress.enabled }}
+{{- range $host := .Values.ingress.hosts }}
+  {{- range .paths }}
+  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
+  {{- end }}
+{{- end }}
+{{- else if contains "NodePort" .Values.service.type }}
+  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "olist-model-deployment.fullname" . }})
+  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+{{- else if contains "LoadBalancer" .Values.service.type }}
+      NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+            You can watch its status by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "olist-model-deployment.fullname" . }}'
+  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "olist-model-deployment.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
+  echo http://$SERVICE_IP:{{ .Values.service.port }}
+{{- else if contains "ClusterIP" .Values.service.type }}
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "olist-model-deployment.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+  export CONTAINER_PORT=$(kubectl get pod --namespace {{ .Release.Namespace }} $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:$CONTAINER_PORT
+{{- end }}
+
+{{- end }}

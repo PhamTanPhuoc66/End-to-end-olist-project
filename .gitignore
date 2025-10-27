@@ -10,4 +10,10 @@ wheels/
 .venv
 .env
 ml/.env
+ml/ultils.py
 dbt_databrick/profiles.yml
+dbt_databrick/.user.yml
+nhap.txt
+run_doc.txt
+main.py
+tess_api.py

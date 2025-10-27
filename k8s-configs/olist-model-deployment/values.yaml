@@ -1,0 +1,63 @@
+#  Bật chế độ InferenceService (KServe)
+inferenceService:
+  enabled: true
+
+#  Cấu hình Image của bạn
+image:
+  repository: phamtanphuoc/champion-models
+  pullPolicy: IfNotPresent
+  # Đặt tag cụ thể (ví dụ: "1.0.0") sẽ tốt hơn "latest"
+  # để Keel có thể theo dõi phiên bản mới
+  tag: ""
+modelName: ""
+mlflowEnvManager: "local"
+mlserverPath: "/usr/local/bin/mlserver"
+# Cấu hình Port
+# Đây là port mà ứng dụng/model của bạn chạy BÊN TRONG container
+containerPort: 8080
+
+# Cấu hình Scale (Quan trọng nhất)
+autoscaling:
+  # Kích hoạt scale-to-zero
+  minReplicas: 0 
+  
+  # Giới hạn scale-up
+  maxReplicas: 2 
+  
+  # Mục tiêu scale-up: Khi Pod đạt 80% CPU
+  # KServe/Knative cũng scale dựa trên "concurrency" (số request đồng thời)
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+#  Cấu hình Service Account (Bảo mật)
+serviceAccount:
+  create: true
+  automount: false
+  name: "" # Để Helm tự tạo tên
+
+# # 🤖 Cấu hình Keel (Tự động cập nhật)
+# keel:
+#   enabled: true
+#   policy: "force" 
+#   trigger: "poll"
+#   pollSchedule: "@every 5m"
+
+
+
+# TẮT HPA (HorizontalPodAutoscaler) truyền thống
+autoscaling_legacy:
+  enabled: false # Đổi tên để tránh xung đột với autoscaling ở trên
+
+# TẮT Ingress truyền thống
+ingress:
+  enabled: false
+
+# TẮT Service truyền thống
+service:
+  enabled: false
+  type: ClusterIP
+  port: 80
+  targetPort: 8080 # Đổi tên thành 'containerPort' ở trên cho rõ ràng
+
+httpRoute:
+  enabled: false
